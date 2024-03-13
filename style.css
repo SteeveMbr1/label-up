@@ -1,0 +1,205 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100vh;
+}
+
+#content {
+    min-height: inherit;
+}
+
+header {}
+
+header .heading {}
+
+header .heading img {
+    width: 100%;
+    height: auto;
+}
+
+main {
+    padding: 1rem 2rem;
+}
+
+.form-control,
+.form-field {
+    width: 100%;
+}
+
+.form-control {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-field {
+    padding-block: .2rem;
+}
+
+.form-field.label-up .label,
+.form-field.label-up .field {
+    display: block;
+
+    width: 100%;
+    height: 2rem;
+    padding-block: .5rem;
+
+}
+
+.form-field.label-up .label {
+    position: relative;
+    top: 2rem;
+
+    transition: ease-in-out 0.2s;
+}
+
+.form-field.label-up .field {
+    border: none;
+    outline: none;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    font-weight: bolder;
+}
+
+.form-field.label-up:has(textarea) .label {
+    left: .5rem;
+}
+
+.form-field.label-up textarea {
+    min-height: 5rem;
+    width: 100%;
+}
+
+.form-field.label-up :focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.form-field.label-up:has(:focus, :hover, .filled) .label {
+    top: .3rem;
+    left: 0;
+    font-size: smaller;
+    transition: ease-in-out 0.2s;
+}
+
+.form-field .custom-select {
+    position: relative;
+}
+
+.form-field .custom-select::after {
+    display: block;
+    content: '\276E';
+
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+
+    transform: rotate(-90deg);
+    transition: .2s ease-in;
+}
+
+.form-field .custom-select:has(:focus, :hover)::after {
+    transform: rotate(90deg);
+}
+
+.form-field .custom-select .select-button {
+    width: 100%;
+    background-color: inherit;
+    text-align: left;
+}
+
+
+.form-field .custom-select .select-dropdown {
+    position: absolute;
+    list-style: none;
+    width: 100%;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    max-height: 140px;
+    overflow-y: auto;
+    transition: 0.5s ease;
+    z-index: 1;
+    visibility: hidden;
+    height: 0;
+    transition: .2s ease-in;
+}
+
+.form-field .custom-select.hover .select-dropdown {
+    visibility: visible;
+    height: 140px;
+
+}
+
+.form-field .custom-select .select-dropdown:focus-within {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.form-field .custom-select .select-dropdown li {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.form-field .custom-select .select-dropdown li input {
+    display: none;
+}
+
+.form-field .custom-select .select-dropdown li label {
+    width: 100%;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.form-field .custom-select .select-dropdown li:hover,
+.form-field .custom-select .select-dropdown li:has(input:checked) {
+    background-color: #f2f2f2;
+}
+
+.form-field .custom-select .select-dropdown li:has(input:focus) {
+    background-color: #dfdfdf;
+}
+
+
+
+#submit-form {
+    padding: .5rem 2rem;
+}
+
+.stick-to-bottom {
+    position: sticky;
+    bottom: 0;
+    background-color: #fff;
+}
+
+.form-control.stick-to-bottom .form-field {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    #content {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+    }
+
+    #content>* {
+        flex: 1 1 50%;
+    }
+
+
+    header .heading img {
+        max-width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
